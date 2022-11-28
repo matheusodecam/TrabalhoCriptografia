@@ -370,7 +370,7 @@ main()
 				system("pause");
 				break;
 				
-			case 3: // Se o usuario digitar '3' ele exibira o conteudo do arquivo
+			case 3: // Se o usuario digitar '3' ele exibira o conteudo do arquivo 
 				system("cls");
 				fflush(stdin);
 				cripto = fopen("criptografia.txt", "r+b"); // Abre o arquivo para leitura
