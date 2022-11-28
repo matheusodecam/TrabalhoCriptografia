@@ -33,15 +33,11 @@ void alerta(int alert){
 	}	
 };
 
-enum BOOLEAN{true = 1, false = 0 }boolean;
-
-
 main()
 {
 	system("color 74");
-	int p = 0, menu, i, j = 0, m, n;
+	int menu, i, j = 0;
 	char frases[100], frasesCripto[300], fraseDescripto[100];
-	boolean = false;
 	
 	FILE *cripto;
 	
@@ -207,7 +203,6 @@ main()
 						}
 					}		
 				}
-				boolean = true;
 				fflush(stdin);
 				cripto = fopen("criptografia.txt", "w+b");
 				fprintf(cripto, frasesCripto);
@@ -217,156 +212,148 @@ main()
 				break;
 			case 2:
 				fflush(stdin);
-				if(boolean == true)
+				cripto = fopen("criptografia.txt", "r");
+				fgets(frasesCripto, 300, cripto);
+				fclose(cripto);
+				for(i = 0, j = 0; frasesCripto[i] != '\0'; i++)
 				{
-					cripto = fopen("criptografia.txt", "r");
-					fgets(frasesCripto, 300, cripto);
-					fclose(cripto);
-					for(i = 0, j = 0; frasesCripto[i] != '\0'; i++)
+					switch(frasesCripto[i])
 					{
-						switch(frasesCripto[i])
-						{
-							case '0':
-								i++;
-								switch(frasesCripto[i])
-								{
-									case '1':
-										fraseDescripto[j++] = 'A';
-										i++;
-										break;
-									case '2':
-										fraseDescripto[j++] = 'B';
-										i++;
-										break;
-									case '3':
-										fraseDescripto[j++] = 'C';
-										i++;
-										break;
-									case '4':
-										fraseDescripto[j++] = 'D';
-										i++;
-										break;
-									case '5':
-										fraseDescripto[j++] = 'E';
-										i++;
-										break;
-									case '6':
-										fraseDescripto[j++] = 'F';
-										i++;
-										break;
-									case '7':
-										fraseDescripto[j++] = 'G';
-										i++;
-										break;
-									case '8':
-										fraseDescripto[j++] = 'H';
-										i++;
-										break;
-									case '9':
-										fraseDescripto[j++] = 'I';
-										i++;
-										break;										
-								}
-								break;
-							case '1':
-								i++;
-								switch(frasesCripto[i])
-								{
-									case '0':
-										fraseDescripto[j++] = 'J';
-										i++;
-										break;
-									case '1':
-										fraseDescripto[j++] = 'K';
-										i++;
-										break;
-									case '2':
-										fraseDescripto[j++] = 'L';
-										i++;
-										break;
-									case '3':
-										fraseDescripto[j++] = 'M';
-										i++;
-										break;
-									case '4':
-										fraseDescripto[j++] = 'N';
-										i++;
-										break;
-									case '5':
-										fraseDescripto[j++] = 'O';
-										i++;
-										break;
-									case '6':
-										fraseDescripto[j++] = 'P';
-										i++;
-										break;
-									case '7':
-										fraseDescripto[j++] = 'Q';
-										i++;
-										break;
-									case '8':
-										fraseDescripto[j++] = 'R';
-										i++;
-										break;
-									case '9':
-										fraseDescripto[j++] = 'S';
-										i++;
-										break;										
-								}
-								break;
-							case '2':
-								i++;
-								switch(frasesCripto[i])
-								{
-									case '0':
-										fraseDescripto[j++] = 'T';
-										i++;
-										break;
-									case '1':
-										fraseDescripto[j++] = 'U';
-										i++;
-										break;
-									case '2':
-										fraseDescripto[j++] = 'V';
-										i++;
-										break;
-									case '3':
-										fraseDescripto[j++] = 'W';
-										i++;
-										break;
-									case '4':
-										fraseDescripto[j++] = 'X';
-										i++;
-										break;
-									case '5':
-										fraseDescripto[j++] = 'Y';
-										i++;
-										break;
-									case '6':
-										fraseDescripto[j++] = 'Z';
-										i++;
-										break;									
-								}
-								break;
-							case 32:
-								fraseDescripto[j++] = ' ';
-								break;
-							default:
-								break;			
-						}	
-					}
-					fflush(stdin);
-					cripto = fopen("criptografia.txt", "w+b");
-					fprintf(cripto, fraseDescripto);
-					fclose(cripto);
-					alerta(4);
-					boolean = false;
-					system("pause");	
-				}else{
-					alerta(5);
-					system("pause");
-					break;	
+						case '0':
+							i++;
+							switch(frasesCripto[i])
+							{
+								case '1':
+									fraseDescripto[j++] = 'A';
+									i++;
+									break;
+								case '2':
+									fraseDescripto[j++] = 'B';
+									i++;
+									break;
+								case '3':
+									fraseDescripto[j++] = 'C';
+									i++;
+									break;
+								case '4':
+									fraseDescripto[j++] = 'D';
+									i++;
+									break;
+								case '5':
+									fraseDescripto[j++] = 'E';
+									i++;
+									break;
+								case '6':
+									fraseDescripto[j++] = 'F';
+									i++;
+									break;
+								case '7':
+									fraseDescripto[j++] = 'G';
+									i++;
+									break;
+								case '8':
+									fraseDescripto[j++] = 'H';
+									i++;
+									break;
+								case '9':
+									fraseDescripto[j++] = 'I';
+									i++;
+									break;										
+							}
+							break;
+						case '1':
+							i++;
+							switch(frasesCripto[i])
+							{
+								case '0':
+									fraseDescripto[j++] = 'J';
+									i++;
+									break;
+								case '1':
+									fraseDescripto[j++] = 'K';
+									i++;
+									break;
+								case '2':
+									fraseDescripto[j++] = 'L';
+									i++;
+									break;
+								case '3':
+									fraseDescripto[j++] = 'M';
+									i++;
+									break;
+								case '4':
+									fraseDescripto[j++] = 'N';
+									i++;
+									break;
+								case '5':
+									fraseDescripto[j++] = 'O';
+									i++;
+									break;
+								case '6':
+									fraseDescripto[j++] = 'P';
+									i++;
+									break;
+								case '7':
+									fraseDescripto[j++] = 'Q';
+									i++;
+									break;
+								case '8':
+									fraseDescripto[j++] = 'R';
+									i++;
+									break;
+								case '9':
+									fraseDescripto[j++] = 'S';
+									i++;
+									break;										
+							}
+							break;
+						case '2':
+							i++;
+							switch(frasesCripto[i])
+							{
+								case '0':
+									fraseDescripto[j++] = 'T';
+									i++;
+									break;
+								case '1':
+									fraseDescripto[j++] = 'U';
+									i++;
+									break;
+								case '2':
+									fraseDescripto[j++] = 'V';
+									i++;
+									break;
+								case '3':
+									fraseDescripto[j++] = 'W';
+									i++;
+									break;
+								case '4':
+									fraseDescripto[j++] = 'X';
+									i++;
+									break;
+								case '5':
+									fraseDescripto[j++] = 'Y';
+									i++;
+									break;
+								case '6':
+									fraseDescripto[j++] = 'Z';
+									i++;
+									break;									
+							}
+							break;
+						case 32:
+							fraseDescripto[j++] = ' ';
+							break;
+						default:
+							break;			
+					}	
 				}
+				fflush(stdin);
+				cripto = fopen("criptografia.txt", "w+b");
+				fprintf(cripto, fraseDescripto);
+				fclose(cripto);
+				alerta(4);
+				system("pause");
 				break;
 			case 3:
 				system("cls");
@@ -391,6 +378,7 @@ main()
 				system("pause");
 				return 0;
 			default:
+				system("cls");
 				alerta(1);
 				system("pause");
 				continue;
