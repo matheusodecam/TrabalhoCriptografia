@@ -7,13 +7,16 @@
 void alerta(int alert){
 	switch(alert){
 		case 1:
-			printf("\a\n\t\t\t\t\t!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\t\t\t\t\t!!! DIGITE UMA OPCAO VALIDA !!!\n\t\t\t\t\t!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
+			system("cls");
+			printf("\a\n\n\n\n\n\t\t\t\t\t!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\t\t\t\t\t!!! DIGITE UMA OPCAO VALIDA !!!\n\t\t\t\t\t!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
 			break;
-		case 2:	
-			printf("\a\n\t\t\t\t\t!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\t\t\t\t\t!!! PROGRAMA ENCERRADO COM SUCESSO !!!\n\t\t\t\t\t!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
+		case 2:
+			system("cls");	
+			printf("\a\n\n\n\n\n\t\t\t\t\t!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\t\t\t\t\t!!! PROGRAMA ENCERRADO COM SUCESSO !!!\n\t\t\t\t\t!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
 			break;
 	}	
 };
+
 
 
 main(){
@@ -24,10 +27,11 @@ main(){
 	
 	while(loop == 1){
 		system("cls");
-		printf("1. Criptografar uma string\n");
-		printf("2. Descriptografar uma string\n");
-		printf("3. Ver arquivo\n");
-		printf("4. Sair\n");
+		printf("\n\t\t\t\t        _________________________________\n");
+		printf("\t\t\t\t\t| 1. Criptografar uma string    |\n");
+		printf("\t\t\t\t\t| 2. Descriptografar uma string |\n");
+		printf("\t\t\t\t\t| 3. Ver arquivo                |\n");
+		printf("\t\t\t\t\t| 4. Sair                       |\n\n\n\n\n");
 		fflush(stdin);
 		scanf("%d", &menu);
 			
@@ -106,7 +110,7 @@ main(){
 							break;
 						case 'M':
 							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '2';
+							frasesCripto[j++] = '3';
 							frasesCripto[j++] = '_';
 							break;
 						case 'N':
@@ -182,12 +186,13 @@ main(){
 						}
 					}		
 				}
-				cripto = fopen("criptografia.txt", "w");
+				cripto = fopen("criptografia.txt", "w+b");
 				fprintf(cripto, frasesCripto);
-				fclose(cripto);		
+				fclose(cripto);
+				system("pause");		
 				break;
 			case 2:
-				cripto = fopen("criptografia.txt", "r");
+				cripto = fopen("criptografia.txt", "r+b");
 				fflush(stdin);
 				fgets(frasesCripto, 300, cripto);
 				fclose(cripto);
@@ -318,17 +323,24 @@ main(){
 							}
 							break;
 						case 32:
+							i++;
+							frases[j++] = ' ';
 							break;
 						default:
 							break;			
 					}	
 				}
-				cripto = fopen("criptografia.txt", "w");
+				cripto = fopen("criptografia.txt", "w+b");
 				fprintf(cripto, frases);
 				fclose(cripto);
+				system("pause");
 				break;
 			case 3:
-				printf("Escolheu o 3\n");
+				cripto = fopen("criptografia.txt", "r+b");
+				fgets(frasesCripto, 300, cripto);
+				fclose(cripto);
+				printf("%s", frasesCripto);
+				printf("\n\n");			
 				system("pause");
 				break;
 			case 4:
