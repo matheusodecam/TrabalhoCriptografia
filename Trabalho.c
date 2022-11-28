@@ -21,12 +21,6 @@ main(){
 	char frases[100], frasesCripto[300];
 	
 	FILE *cripto;
-	//char palavra[100], frase[p][100];
-	//gets(palavra);
-	//	criptografar(palavra);
-	//printf("%s\n", palavra);
-	//cripto = fopen("criptografia.txt", "a");
-	//fclose(cripto);
 	
 	while(loop == 1){
 		system("cls");
@@ -193,8 +187,145 @@ main(){
 				fclose(cripto);		
 				break;
 			case 2:
-				printf("Escolheu o 2\n");
-				system("pause");
+				cripto = fopen("criptografia.txt", "r");
+				fflush(stdin);
+				fgets(frasesCripto, 300, cripto);
+				fclose(cripto);
+				for(i = 0, j = 0; frasesCripto[i] != '\0'; i++)
+				{
+					switch(frasesCripto[i])
+					{
+						case '0':
+							i++;
+							switch(frasesCripto[i])
+							{
+								case '1':
+									frases[j++] = 'A';
+									i++;
+									break;
+								case '2':
+									frases[j++] = 'B';
+									i++;
+									break;
+								case '3':
+									frases[j++] = 'C';
+									i++;
+									break;
+								case '4':
+									frases[j++] = 'D';
+									i++;
+									break;
+								case '5':
+									frases[j++] = 'E';
+									i++;
+									break;
+								case '6':
+									frases[j++] = 'F';
+									i++;
+									break;
+								case '7':
+									frases[j++] = 'G';
+									i++;
+									break;
+								case '8':
+									frases[j++] = 'H';
+									i++;
+									break;
+								case '9':
+									frases[j++] = 'I';
+									i++;
+									break;										
+							}
+							break;
+						case '1':
+							i++;
+							switch(frasesCripto[i])
+							{
+								case '0':
+									frases[j++] = 'J';
+									i++;
+									break;
+								case '1':
+									frases[j++] = 'K';
+									i++;
+									break;
+								case '2':
+									frases[j++] = 'L';
+									i++;
+									break;
+								case '3':
+									frases[j++] = 'M';
+									i++;
+									break;
+								case '4':
+									frases[j++] = 'N';
+									i++;
+									break;
+								case '5':
+									frases[j++] = 'O';
+									i++;
+									break;
+								case '6':
+									frases[j++] = 'P';
+									i++;
+									break;
+								case '7':
+									frases[j++] = 'Q';
+									i++;
+									break;
+								case '8':
+									frases[j++] = 'R';
+									i++;
+									break;
+								case '9':
+									frases[j++] = 'S';
+									i++;
+									break;										
+							}
+							break;
+						case '2':
+							i++;
+							switch(frasesCripto[i])
+							{
+								case '0':
+									frases[j++] = 'T';
+									i++;
+									break;
+								case '1':
+									frases[j++] = 'U';
+									i++;
+									break;
+								case '2':
+									frases[j++] = 'V';
+									i++;
+									break;
+								case '3':
+									frases[j++] = 'W';
+									i++;
+									break;
+								case '4':
+									frases[j++] = 'X';
+									i++;
+									break;
+								case '5':
+									frases[j++] = 'Y';
+									i++;
+									break;
+								case '6':
+									frases[j++] = 'Z';
+									i++;
+									break;									
+							}
+							break;
+						case 32:
+							break;
+						default:
+							break;			
+					}	
+				}
+				cripto = fopen("criptografia.txt", "w");
+				fprintf(cripto, frases);
+				fclose(cripto);
 				break;
 			case 3:
 				printf("Escolheu o 3\n");
