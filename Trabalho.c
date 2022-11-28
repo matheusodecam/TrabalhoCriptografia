@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#define loop 1
+#define loop 1 // Variavel definida para executar o menu em loop
 
-void alerta(int alert){
+void alerta(int alert){ // Funcao para dar os alertas na tela
 	switch(alert){
 		case 1:
 			system("cls");
@@ -35,197 +35,209 @@ void alerta(int alert){
 
 main()
 {
-	system("color 74");
+	system("color 74"); // Comando para alterar as cores do prompt
+	
+	//Definicao das variaveis/////////////////////////////////////
 	int menu, i, j = 0;
 	char frases[100], frasesCripto[300], fraseDescripto[100];
+	//////////////////////////////////////////////////////////////
+	FILE *cripto; // Criando o ponteiro que dara acesso ao arquivo criptografia.txt
 	
-	FILE *cripto;
-	
-	while(loop == 1){
-		system("cls");
-		printf("\n\t\t\t\t        _________________________________\n");
+	while(loop == 1) // Loop para executar o menu
+	{
+		/////// MENU ///////////////////////////////////////////////////////////////////////
+		system("cls"); // limpa a tela
+		printf("\n\n\n\n\t\t\t\t        _________________________________\n");
 		printf("\t\t\t\t\t| 1. Criptografar uma string    |\n");
 		printf("\t\t\t\t\t| 2. Descriptografar uma string |\n");
 		printf("\t\t\t\t\t| 3. Ver arquivo                |\n");
-		printf("\t\t\t\t\t| 4. Sair                       |\n\n\n\n\n");
+		printf("\t\t\t\t\t| 4. Sair                       |\n\n\n\n\n\n\n");
+		printf("\t\t\t\t\tOpcao escolhida -> ");
 		fflush(stdin);
-		scanf("%d", &menu);
+		scanf("%d", &menu); // Lendo a variavel 'menu' que sera usada para o switch/case/////
+		/////////////////////////////////////////////////////////////////////////////////////	
+		
+		switch(menu){ // switch/case do menu
 			
-		switch(menu){
-			case 1:
+			case 1: // Se o usuario digitar '1' ele criptografara
 				system("cls");
-				fflush(stdin);
-				printf("Digite a frase a ser criptografada:\n\n\n-> ");
-				gets(frases);
-				for(i = 0; frases[i] != '\0'; i++)
+				fflush(stdin); // limpa o buffer
+				printf("\n\n\n\n\n\t\t\t\t Digite a frase a ser criptografada:\n\n\n\n\n\t\t\t\t-> ");
+				gets(frases); // recebe os dados do teclado enquanto o usuaria nao apertar enter
+				
+				for(i = 0; frases[i] != '\0'; i++) // Vai percorrer toda a string digitada
 				{
-					if((frases[i] > 64 && frases[i] < 91) || (frases[i] > 96 && frases[i] < 123) || frases[i] == 32)
+					if((frases[i] > 64 && frases[i] < 91) || (frases[i] > 96 && frases[i] < 123) || frases[i] == 32) // Condicao para verificar se o caractere é letra ou espaco
 					{
-						frasesCripto[j] = toupper(frases[i]);
+						frasesCripto[j] = toupper(frases[i]); // Se for letra ou espaco, ele atribui o valor a outra string, ja formatado para letras maiusculas
 			
-						switch(frasesCripto[j])
+						switch(frasesCripto[j]) // Vai criptografar cada elemento da string de letras ou espacos
 						{
-						case 'A':
-							frasesCripto[j++] = '0';
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '_'; 
-							break;
-						case 'B':
-							frasesCripto[j++] = '0';
-							frasesCripto[j++] = '2';
-							frasesCripto[j++] = '_';
-							break;
-						case 'C':
-							frasesCripto[j++] = '0';
-							frasesCripto[j++] = '3';
-							frasesCripto[j++] = '_';
-							break;
-						case 'D':
-							frasesCripto[j++] = '0';
-							frasesCripto[j++] = '4';
-							frasesCripto[j++] = '_';
-							break;
-						case 'E':
-							frasesCripto[j++] = '0';
-							frasesCripto[j++] = '5';
-							frasesCripto[j++] = '_';
-							break;
-						case 'F':
-							frasesCripto[j++] = '0';
-							frasesCripto[j++] = '6';
-							frasesCripto[j++] = '_';
-							break;
-						case 'G':
-							frasesCripto[j++] = '0';
-							frasesCripto[j++] = '7';
-							frasesCripto[j++] = '_';
-							break;
-						case 'H':
-							frasesCripto[j++] = '0';
-							frasesCripto[j++] = '8';
-							frasesCripto[j++] = '_';
-							break;
-						case 'I':
-							frasesCripto[j++] = '0';
-							frasesCripto[j++] = '9';
-							frasesCripto[j++] = '_';
-							break;
-						case 'J':
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '0';
-							frasesCripto[j++] = '_';
-							break;
-						case 'K':
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '_';
-							break;
-						case 'L':
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '2';
-							frasesCripto[j++] = '_';
-							break;
-						case 'M':
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '3';
-							frasesCripto[j++] = '_';
-							break;
-						case 'N':
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '4';
-							frasesCripto[j++] = '_';
-							break;
-						case 'O':
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '5';
-							frasesCripto[j++] = '_';
-							break;
-						case 'P':
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '6';
-							frasesCripto[j++] = '_';
-							break;
-						case 'Q':
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '7';
-							frasesCripto[j++] = '_';
-							break;
-						case 'R':
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '8';
-							frasesCripto[j++] = '_';
-							break;
-						case 'S':
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '9';
-							frasesCripto[j++] = '_';
-							break;
-						case 'T':
-							frasesCripto[j++] = '2';
-							frasesCripto[j++] = '0';
-							frasesCripto[j++] = '_';
-							break;
-						case 'U':
-							frasesCripto[j++] = '2';
-							frasesCripto[j++] = '1';
-							frasesCripto[j++] = '_';
-							break;
-						case 'V':
-							frasesCripto[j++] = '2';
-							frasesCripto[j++] = '2';
-							frasesCripto[j++] = '_';
-							break;
-						case 'W':
-							frasesCripto[j++] = '2';
-							frasesCripto[j++] = '3';
-							frasesCripto[j++] = '_';
-							break;
-						case 'X':
-							frasesCripto[j++] = '2';
-							frasesCripto[j++] = '4';
-							frasesCripto[j++] = '_';
-							break;
-						case 'Y':
-							frasesCripto[j++] = '2';
-							frasesCripto[j++] = '5';
-							frasesCripto[j++] = '_';
-							break;
-						case 'Z':
-							frasesCripto[j++] = '2';
-							frasesCripto[j++] = '6';
-							frasesCripto[j++] = '_';
-							break;
-						case 32:
-							frasesCripto[j++] = ' ';
-							break;
-						default:
-							break;
+							case 'A': ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+								frasesCripto[j++] = '0';	/////////// Vai olhar letra por letra e subistituir o valor atual por um outro e adicionar outras dois valores nas duas proximas posicoes do vetor////
+								frasesCripto[j++] = '1';	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+								frasesCripto[j++] = '_'; 
+								break;
+							case 'B':
+								frasesCripto[j++] = '0';
+								frasesCripto[j++] = '2';
+								frasesCripto[j++] = '_';
+								break;
+							case 'C':
+								frasesCripto[j++] = '0';
+								frasesCripto[j++] = '3';
+								frasesCripto[j++] = '_';
+								break;
+							case 'D':
+								frasesCripto[j++] = '0';
+								frasesCripto[j++] = '4';
+								frasesCripto[j++] = '_';
+								break;
+							case 'E':
+								frasesCripto[j++] = '0';
+								frasesCripto[j++] = '5';
+								frasesCripto[j++] = '_';
+								break;
+							case 'F':
+								frasesCripto[j++] = '0';
+								frasesCripto[j++] = '6';
+								frasesCripto[j++] = '_';
+								break;
+							case 'G':
+								frasesCripto[j++] = '0';
+								frasesCripto[j++] = '7';
+								frasesCripto[j++] = '_';
+								break;
+							case 'H':
+								frasesCripto[j++] = '0';
+								frasesCripto[j++] = '8';
+								frasesCripto[j++] = '_';
+								break;
+							case 'I':
+								frasesCripto[j++] = '0';
+								frasesCripto[j++] = '9';
+								frasesCripto[j++] = '_';
+								break;
+							case 'J':
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '0';
+								frasesCripto[j++] = '_';
+								break;
+							case 'K':
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '_';
+								break;
+							case 'L':
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '2';
+								frasesCripto[j++] = '_';
+								break;
+							case 'M':
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '3';
+								frasesCripto[j++] = '_';
+								break;
+							case 'N':
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '4';
+								frasesCripto[j++] = '_';
+								break;
+							case 'O':
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '5';
+								frasesCripto[j++] = '_';
+								break;
+							case 'P':
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '6';
+								frasesCripto[j++] = '_';
+								break;
+							case 'Q':
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '7';
+								frasesCripto[j++] = '_';
+								break;
+							case 'R':
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '8';
+								frasesCripto[j++] = '_';
+								break;
+							case 'S':
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '9';
+								frasesCripto[j++] = '_';
+								break;
+							case 'T':
+								frasesCripto[j++] = '2';
+								frasesCripto[j++] = '0';
+								frasesCripto[j++] = '_';
+								break;
+							case 'U':
+								frasesCripto[j++] = '2';
+								frasesCripto[j++] = '1';
+								frasesCripto[j++] = '_';
+								break;
+							case 'V':
+								frasesCripto[j++] = '2';
+								frasesCripto[j++] = '2';
+								frasesCripto[j++] = '_';
+								break;
+							case 'W':
+								frasesCripto[j++] = '2';
+								frasesCripto[j++] = '3';
+								frasesCripto[j++] = '_';
+								break;
+							case 'X':
+								frasesCripto[j++] = '2';
+								frasesCripto[j++] = '4';
+								frasesCripto[j++] = '_';
+								break;
+							case 'Y':
+								frasesCripto[j++] = '2';
+								frasesCripto[j++] = '5';
+								frasesCripto[j++] = '_';
+								break;
+							case 'Z':
+								frasesCripto[j++] = '2';
+								frasesCripto[j++] = '6';
+								frasesCripto[j++] = '_';
+								break;
+							case 32:
+								frasesCripto[j++] = ' ';
+								break;
+							default:
+								break;
 						}
 					}		
-				}
+				} //////////////////////////////////////// o vetor ja esta criptografado ///////////////////////
 				fflush(stdin);
-				cripto = fopen("criptografia.txt", "w+b");
-				fprintf(cripto, frasesCripto);
-				fclose(cripto);
-				alerta(3);
+				cripto = fopen("criptografia.txt", "w+b"); // Abrira o arquivo 'criptografia.txt', caso ele nao exista, sera criado
+				fprintf(cripto, frasesCripto); // Escreve a string criptografada no arquivo
+				fclose(cripto); // fecha o arquivo
+				*frases = '\0'; // Sera atribuido \0 para a posicao inicial do vetor, assim ele sera 'resetado'
+				*frasesCripto = '\0'; // Sera atribuido \0 para a posicao inicial do vetor, assim ele sera 'resetado'
+				alerta(3); // exibe o alerta 3
 				system("pause");		
 				break;
-			case 2:
+				
+			case 2: // Se o usuario digitar '2' ele descriptografara
+				*frasesCripto = '\0'; // Sera atribuido \0 para a posicao inicial do vetor, assim ele sera 'resetado'
 				fflush(stdin);
-				cripto = fopen("criptografia.txt", "r");
-				fgets(frasesCripto, 300, cripto);
-				fclose(cripto);
-				for(i = 0, j = 0; frasesCripto[i] != '\0'; i++)
-				{
-					switch(frasesCripto[i])
-					{
-						case '0':
+				cripto = fopen("criptografia.txt", "r"); // Abre o arquivo 'criptografia.txt' para leitura
+				fgets(frasesCripto, 300, cripto); // Atribui a string lida no arquivo para o vetor
+				fclose(cripto); // fecha o arquivo
+				for(i = 0, j = 0; frasesCripto[i] != '\0'; i++) /////////////////////////////////////////////////////////////////////////
+				{												//// O for sera executado enquanto nao achar o final da string //////////
+					switch(frasesCripto[i])						/////////////////////////////////////////////////////////////////////////						
+					{	// Vai verificar as posicoes de 3 em 3
+						case '0': // Se a primeira lida for 0 ele entra e incrementa o i
 							i++;
-							switch(frasesCripto[i])
+							switch(frasesCripto[i]) // O i foi incrementado, entao agora vai verificar a proxima posicao
 							{
-								case '1':
-									fraseDescripto[j++] = 'A';
-									i++;
+								case '1': // E caso a proxima posicao for 1 ele passa o caractere para um vetor e incrementa o i novamente, isso sera feito para os 27 casos
+									fraseDescripto[j++] = 'A'; //////////////// que sao as 26 letras e o espaco //////////////////////
+									i++; //// Incrementa o I sempre, para poder pular o underline
 									break;
 								case '2':
 									fraseDescripto[j++] = 'B';
@@ -342,46 +354,52 @@ main()
 							}
 							break;
 						case 32:
-							fraseDescripto[j++] = ' ';
+							fraseDescripto[j++] = ' '; // ele nao incrementa o i, pois o caractere espaco nao é criptografado
 							break;
 						default:
 							break;			
 					}	
 				}
 				fflush(stdin);
-				cripto = fopen("criptografia.txt", "w+b");
-				fprintf(cripto, fraseDescripto);
-				fclose(cripto);
-				alerta(4);
+				cripto = fopen("criptografia.txt", "w+b"); // Abre o arquivo novamente, so que agora permitindo sobescreve-lo
+				fprintf(cripto, fraseDescripto); // Escreve no arquivo o valor do vetor descriptografado
+				fclose(cripto); // fecha o arquivo
+				*fraseDescripto = '\0'; // Sera atribuido \0 para a posicao inicial do vetor, assim ele sera 'resetado'
+				*frasesCripto = '\0'; // Sera atribuido \0 para a posicao inicial do vetor, assim ele sera 'resetado'
+				alerta(4); // exibe o alerta 4
 				system("pause");
 				break;
-			case 3:
+				
+			case 3: // Se o usuario digitar '3' ele exibira o conteudo do arquivo
 				system("cls");
 				fflush(stdin);
-				cripto = fopen("criptografia.txt", "r+b");
-				if(cripto == NULL)
+				cripto = fopen("criptografia.txt", "r+b"); // Abre o arquivo para leitura
+				if(cripto == NULL) // Caso o arquivo nao exista, ele vai informar o erro e voltara para o menu
 				{
-					alerta(6);
+					alerta(6); // exibe o alerta 6
 					system("pause");
 					break;
 				}else{
-					fgets(frasesCripto, 300, cripto);
-					printf("CONTEUDO DO ARQUIVO:\n\n\n-> %s\n\n\n\n\n\n\n\n\n", frasesCripto);
+					*frasesCripto = '\0'; // Sera atribuido \0 para a posicao inicial do vetor, assim ele sera 'resetado'
+					fgets(frasesCripto, 300, cripto); // caso exista, ele atribui a string do arquivo para um vetor
+					printf("\n\n\n\n\n\t\t\t\tCONTEUDO DO ARQUIVO:\n\n\n\n\n\t\t\t\t-> %s\n\n\n\n\n\n\n\n\n", frasesCripto); // Aqui ele exibe o vetor
 					printf("\n\n");			
 					system("pause");
-					fclose(cripto);
+					fclose(cripto); // fecha o arquivo
 				}
 				break;
-			case 4:
+				
+			case 4: // Se o usuario digitar '4' ira encerrar o programa
 				system("cls");
-				alerta(2);
+				alerta(2); // exibe o alerta 2
 				system("pause");
-				return 0;
-			default:
+				return 0; //Retornara um valor para a funcao main, para encerrar o programa
+				 
+			default: // Se n for nenhuma das outras opcoes, ele executara o loop novamente e pedira para exibir uma opcao valida
 				system("cls");
-				alerta(1);
+				alerta(1); // exibe o alerta 1
 				system("pause");
-				continue;
+				continue; 
 		}	
 		
 	}
