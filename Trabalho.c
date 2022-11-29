@@ -5,7 +5,8 @@
 #define loop 1 // Variavel definida para executar o menu em loop
 
 void alerta(int alert){ // Funcao para dar os alertas na tela
-	switch(alert){
+	switch(alert)
+	{
 		case 1:
 			system("cls");
 			printf("\a\n\n\n\n\n\t\t\t\t\t!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\t\t\t\t\t!!! DIGITE UMA OPCAO VALIDA !!!\n\t\t\t\t\t!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -426,7 +427,8 @@ main()
 					alerta(6); // exibe o alerta 6
 					system("pause");
 					break;
-				}else{
+				}else
+				{
 					fflush(stdin);
 					fgets(frasesCripto, sizeof(frasesCripto), cripto); // caso exista, ele atribui a string do arquivo para um vetor
 					printf("\n\n\n\n\n\t\t\t\tCONTEUDO DO ARQUIVO:\n\n\n\n\n\t\t\t\t-> %s\n\n\n\n\n\n\n\n\n", frasesCripto); // Aqui ele exibe o vetor
